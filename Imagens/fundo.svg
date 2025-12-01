@@ -1,0 +1,13 @@
+<svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="pattern" width="160" height="160" patternUnits="userSpaceOnUse">
+      <rect width="160" height="160" fill="#0c2c44" />
+
+      <!-- Linhas verticais laterais com 0.7px de largura -->
+      <path d="M20 0 L20 160" stroke="#f7e5b7" stroke-width="0.7" opacity="1"/>
+      <path d="M140 0 L140 160" stroke="#f7e5b7" stroke-width="0.7" opacity="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#pattern)"/>
+</svg>
