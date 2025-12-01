@@ -3,27 +3,34 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- Configurações de compatibilidade e viewport para responsividade -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sítio Santa Tereza</title>
+    <!-- Importação do Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Importação do CSS personalizado -->
     <link rel="stylesheet" href="Site.css">
 </head>
 
 <body>
+    <!-- Script do Bootstrap Bundle (necessário para componentes interativos como navbar) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 
+    <!-- Barra de Navegação Principal -->
     <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Navegação principal">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Sítio Santa Tereza</a> <button class="navbar-toggler" type="button"
-                data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Alternar navegação">
+            <a class="navbar-brand" href="#">Sítio Santa Tereza</a>
+            <!-- Botão de alternância para mobile (hambúrguer) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+            <!-- Links da navegação -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#Home">Home</a></li>
@@ -36,20 +43,24 @@
     </nav>
 
     <main class="main-wrapper">
+        <!-- Seção Home: Introdução -->
         <section id="Home">
             <h1>Bem-vindo ao Sítio Santa Tereza</h1>
             <p>Conheça nossos produtos e saiba mais sobre nossa história.</p>
         </section>
 
+        <!-- Seção Sobre: Informações e Localização -->
         <section id="Sobre">
             <h2>Quem somos nós?</h2>
             <p>Somos uma empresa familiar, localizada em Venda Nova do Imigrante-ES. Todos os nossos produtos são
                 produzidos em nossa propriedade e de forma artesanal. Venha nos visitar!</p>
             <div class="mapa">
+                <!-- Mapa do Google Maps -->
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4476.977310141919!2d-41.1202845!3d-20.326348499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb98f9df1de5739%3A0xc33a5cf374cf7dfa!2sCacha%C3%A7a%20Alfredo%20Sossai!5e1!3m2!1spt-BR!2sbr!4v1755617972466!5m2!1spt-BR!2sbr"
                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
+                <!-- Vídeo Institucional -->
                 <video controls>
                     <source src="./Site-Pessoal/Vídeos e legendas/Vídeo paisagem.mp4" type="video/mp4">
                     <track kind="captions" srclang="pt-br" src="./Site-Pessoal/Vídeos e legendas/Legenda.vtt"
@@ -60,9 +71,11 @@
             </div>
         </section>
 
+        <!-- Seção Nossos Produtos: Catálogo -->
         <section id="Nossos-produtos">
             <h2>Nossos Produtos:</h2>
             <div class="produtos">
+                <!-- Produto 1 -->
                 <div class="produto">
                     <p>Café em pó 500g</p>
                     <div class="caixa"><img src="./Site-Pessoal/Imagens/cafe1.jpg" alt="Café pó 500g"></div>
@@ -72,8 +85,8 @@
                         </button>
                         <button class="btn-comentar" onclick="alert('Em breve!')">Comentar</button>
                     </div>
-
                 </div>
+                <!-- Produto 2 -->
                 <div class="produto">
                     <p>Café em grão 500g</p>
                     <div class="caixa"><img src="./Site-Pessoal/Imagens/cafe2.jpg" alt="Café grão 500g"></div>
@@ -83,8 +96,8 @@
                         </button>
                         <button class="btn-comentar" onclick="alert('Em breve!')">Comentar</button>
                     </div>
-
                 </div>
+                <!-- Produto 3 -->
                 <div class="produto">
                     <p>Café especial 250g</p>
                     <div class="caixa"><img src="./Site-Pessoal/Imagens/cafe3.jpg" alt="Café pf"></div>
@@ -94,8 +107,8 @@
                         </button>
                         <button class="btn-comentar" onclick="alert('Em breve!')">Comentar</button>
                     </div>
-
                 </div>
+                <!-- Produto 4 -->
                 <div class="produto">
                     <p>Cachaça branca</p>
                     <div class="caixa"><img src="./Site-Pessoal/Imagens/cachaca1.jpg" alt="Cachaça branca"></div>
@@ -105,8 +118,8 @@
                         </button>
                         <button class="btn-comentar" onclick="alert('Em breve!')">Comentar</button>
                     </div>
-
                 </div>
+                <!-- Produto 5 -->
                 <div class="produto">
                     <p>Cachaça amarela</p>
                     <div class="caixa"><img src="./Site-Pessoal/Imagens/cachaca2.jpg" alt="Cachaça amarela"></div>
@@ -116,12 +129,12 @@
                         </button>
                         <button class="btn-comentar" onclick="alert('Em breve!')">Comentar</button>
                     </div>
-
                 </div>
             </div>
             <div class="tabela-precos"><a href="/tabela.html">Veja nossa tabela de preços</a></div>
         </section>
 
+        <!-- Seção Contatos: Formulário -->
         <section id="Contatos">
             <h2>Entre em Contato</h2>
             <form id="contato-form">
@@ -158,6 +171,7 @@
             }
         });
 
+        // Função para alternar entre modo claro e escuro
         function darkModeToggle() {
             // Alterna a classe dark-mode no 'body' (pois as variáveis globais estão lá)
             if (document.body.classList.contains('dark-mode')) {
@@ -169,15 +183,15 @@
             }
         }
 
+        // Verifica o tema salvo no localStorage ao carregar a página
         document.addEventListener('DOMContentLoaded', () => {
-            // Carrega o tema salvo no localStorage
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-mode');
             }
         });
 
-
+        // Lógica para os botões de "Curtir"
         const botoesCurtir = document.querySelectorAll('.btn-curtir');
 
         botoesCurtir.forEach(botao => {
@@ -188,18 +202,19 @@
                 if (botao.classList.contains('curtido')) {
                     botao.classList.remove('curtido');
                     numeroAtual--;
-                    // CORRIGIDO: Uso de Template Literal (` `)
+                    // Atualiza o texto e o contador
                     botao.innerHTML = `Curtir <span class="contagem">${numeroAtual}</span>`;
                 } else {
                     botao.classList.add('curtido');
                     numeroAtual++;
-                    // CORRIGIDO: Uso de Template Literal (` `)
+                    // Atualiza o texto e o contador
                     botao.innerHTML = `Curtiu <span class="contagem">${numeroAtual}</span>`;
                 }
             });
         });
     </script>
 
+    <!-- Rodapé -->
     <footer>
         <div class="footer-content">
             <p>Siga-nos nas redes sociais:</p>

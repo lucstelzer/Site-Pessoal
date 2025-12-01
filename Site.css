@@ -1,15 +1,13 @@
-/* Arquivo CSS do site com comentários explicativos para cada bloco/propriedade. */
-
-/* Seletor universal: zera margens/paddings, faz box-sizing previsível e define fonte base */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* Reset universal para garantir consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
-/* Variáveis CSS: define altura da navbar para reutilizar no layout */
-:root{
+/* Definição de variáveis globais (Cores, Tamanhos, Transições) */
+:root {
     --nav-h: 64px;
     --background-color: black;
     --brand-color: #f7e5b7;
@@ -27,16 +25,17 @@
     --color: white;
     --button-text: #222;
     --form-button-hover-bg: #222;
+    --icon-color: grey;
 }
 
-/* Body: desloca conteúdo para não ficar sob a navbar fixa e garante box-sizing */
-body{
+/* Estilos do Corpo da página */
+body {
     padding-top: var(--nav-h);
     background: url(./Imagens/fundo.svg);
     background-size: contain;
 }
 
-/* Navbar: fixa no topo, ocupa toda a largura e mantém sobreposição por z-index */
+/* Barra de Navegação (Navbar) fixa no topo */
 .navbar {
     position: fixed;
     top: 0;
@@ -51,35 +50,37 @@ body{
     background-color: var(--background-color);
 }
 
-/* Links da navbar: cor padrão e hover */
-.navbar .nav-link { 
+/* Links da navegação */
+.navbar .nav-link {
     color: var(--color);
 }
-.navbar .nav-link:hover { 
+
+.navbar .nav-link:hover {
     color: grey;
 }
 
-/* Marca (brand) da navbar: destaque visual */
-.navbar-brand { 
+/* Marca/Logo da navegação */
+.navbar-brand {
     color: var(--color);
     font-weight: 700;
 }
-.navbar-brand:hover { 
+
+.navbar-brand:hover {
     color: grey;
 }
 
-/* Toggler: estilo do botão que abre/fecha o menu em telas pequenas */
-.navbar-toggler { 
-    border-color: var(--color);
+/* Botão de menu (hambúrguer) para mobile */
+.navbar-toggler {
+    border-color: var(--icon-color) !important;
 }
 
-/* Toggler Icon: Corrigido para azul (#0c2c44) */
-.navbar-toggler-icon { 
-    color:#0c2c44; 
-} 
+/* Ícone do menu hambúrguer com correção de cor via máscara */
+.navbar-toggler-icon {
+    color: var(--icon-color) !important;
+}
 
-/* Seção Home: background responsivo cobrindo a área disponível */
-#Home{
+/* Seção Home: Tela de boas-vindas */
+#Home {
     background-repeat: repeat;
     min-height: calc(100vh - var(--nav-h));
     display: flex;
@@ -91,27 +92,30 @@ body{
     padding: 2rem 1rem;
     width: 80%;
 }
-/* Títulos e parágrafos dentro de #Home */
-#Home h1{
+
+/* Título da Home com efeito de hover */
+#Home h1 {
     font-size: 48px;
     transition: transform var(--transition-slow) ease-in-out;
 }
-#Home h1:hover{
+
+#Home h1:hover {
     transform: scale(1.1);
 }
-#Home p{
+
+#Home p {
     font-size: 24px;
     margin-top: 20px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-/* Estilização geral das seções do site */
-section{
+/* Estilo geral para as seções */
+section {
     padding: 80px 20px;
     text-align: center;
 }
 
-/* Formulário: layout em coluna, centralizado e com estilo de cartão */
+/* Estilização do Formulário de Contato */
 form {
     display: flex;
     flex-direction: column;
@@ -119,13 +123,12 @@ form {
     height: auto;
     margin: 40px auto 0 auto;
     padding: 32px 24px;
-    background: rgba(255,255,255,0.97);
+    background: rgba(255, 255, 255, 0.97);
     border-radius: var(--border-radius);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
     gap: 16px;
 }
 
-/* Rótulos do formulário: legibilidade e alinhamento */
 form label {
     color: #222;
     font-weight: bold;
@@ -133,8 +136,9 @@ form label {
     text-align: left;
 }
 
-/* Inputs e textareas: padding, borda e transições */
-form input, form textarea {
+/* Campos de entrada de texto */
+form input,
+form textarea {
     padding: 10px 12px;
     border: 1.5px solid var(--border-color);
     border-radius: var(--border-radius-sm);
@@ -145,15 +149,16 @@ form input, form textarea {
     margin-bottom: 8px;
 }
 
-/* Estado de foco: destaque visual para acessibilidade */
-form input:focus, form textarea:focus {
+form input:focus,
+form textarea:focus {
     border: 1.5px solid var(--border-focus-color);
     background: var(--bg-focus);
     outline: none;
 }
 
-/* Botões do formulário: largura total, cores e hover */
-form input[type="submit"], form input[type="reset"] {
+/* Botões do formulário (Enviar/Limpar) */
+form input[type="submit"],
+form input[type="reset"] {
     width: 100%;
     height: 48px;
     font-size: 1.1em;
@@ -166,54 +171,62 @@ form input[type="submit"], form input[type="reset"] {
     margin-top: 8px;
     transition: background var(--transition-speed), color var(--transition-speed), transform var(--transition-speed);
 }
-form input[type="submit"]:hover, form input[type="reset"]:hover {
+
+form input[type="submit"]:hover,
+form input[type="reset"]:hover {
     background: var(--form-button-hover-bg);
     color: var(--button-hover-text);
     transform: scale(1.03);
 }
 
-/* Checkbox dos termos: espaçamento ao lado */
+/* Checkbox e link dos Termos de Uso */
 .termos-texto input[type="checkbox"] {
     margin-right: 6px;
 }
 
-/* Link dos termos: aparência e hover */
 .termos-texto a {
     color: black;
     text-decoration: underline;
 }
+
 .termos-texto a:hover {
     color: var(--link-hover-color);
 }
 
-/* Container genérico: gap e centralização */
-.container{
+/* Container genérico */
+.container {
     gap: 0.5vh;
     justify-items: center;
 }
-.container p{
+
+.container p {
     max-width: 55vh;
 }
 
-/* Rodapé: cor de fundo, texto e espaçamento */
-footer{
+/* Rodapé */
+footer {
     background: var(--background-color);
     color: var(--color);
     text-align: center;
     padding: 20px;
 }
-footer a{
+
+footer a {
     color: var(--color);
 }
-footer a:hover{
+
+footer a:hover {
     color: grey;
 }
-footer ul{
+
+footer ul {
     list-style: none;
 }
 
-/* Seção Sobre, Nossos produtos e Contatos: background responsivo */
-#Sobre, #Nossos-produtos, #Contatos {
+/* Seções de Conteúdo (Sobre, Produtos, Contatos) */
+#Sobre,
+#Nossos-produtos,
+#Contatos {
     height: auto;
     color: var(--color);
     width: 80%;
@@ -242,7 +255,7 @@ footer ul{
     text-align: justify;
 }
 
-/* Lista de produtos: layout flex, alinhamento e espaçamento */
+/* Grid de Produtos */
 .produtos {
     display: flex;
     flex-wrap: wrap;
@@ -253,7 +266,7 @@ footer ul{
     width: 90%;
 }
 
-/* Cada produto tem largura fixa/responsiva e alinhamento interno */
+/* Card de Produto Individual */
 .produto {
     width: 280px;
     display: flex;
@@ -262,7 +275,7 @@ footer ul{
     align-items: center;
 }
 
-/* Caixa da imagem: mantém proporção e esconde excesso */
+/* Caixa de imagem do produto */
 .caixa {
     width: 100%;
     aspect-ratio: 9 / 11;
@@ -272,7 +285,6 @@ footer ul{
     display: block;
 }
 
-/* Imagem dentro da caixa: cobre a caixa sem distorcer (recorta centralizado) */
 .caixa img {
     width: 100%;
     height: 100%;
@@ -280,45 +292,54 @@ footer ul{
     display: block;
 }
 
-/* Ajustes para telas muito grandes: aumenta largura das .produto */
+/* Media Queries para Telas Grandes (Desktop Wide) */
 @media (min-width: 1920px) {
-    /* Corrigido para aplicar a largura correta nos elementos de media e produtos */
-    .produto { width: 40rem; }
-    .caixa { aspect-ratio: 4 / 5; }
+    .produto {
+        width: 40rem;
+    }
 
-    /* Ajuste para mapa em telas grandes */
-    .mapa img, .mapa video, .mapa iframe { width: 35rem; }
+    .caixa {
+        aspect-ratio: 4 / 5;
+    }
+
+    .mapa img,
+    .mapa video,
+    .mapa iframe {
+        width: 35rem;
+    }
 }
 
-/* Mobile: duas colunas aproximadas para produtos em telas pequenas */
+/* Media Queries para Mobile */
 @media (max-width: 480px) {
-    .produto { width: calc(50% - 16px); }
-    .produtos, .mapa{ gap: 12px; }
+    .produto {
+        width: calc(50% - 16px);
+    }
 
-    /* Correção: Garante que os elementos do mapa ocupem quase 100% da largura em telas pequenas */
-    .mapa img, .mapa video, .mapa iframe { 
+    .produtos,
+    .mapa {
+        gap: 12px;
+    }
+
+    .mapa img,
+    .mapa video,
+    .mapa iframe {
         width: 100%;
         max-width: 100%;
     }
 }
 
-/* Responsive: ajustes para telas médias */
+/* Media Queries para Tablets/Laptops pequenos */
 @media (max-width: 1100px) {
     #Sobre p {
         max-width: 20rem;
     }
+
     form {
         max-width: 20rem;
     }
 }
 
-/* Seção Contatos: background com mesma lógica de responsividade */
-#Contatos {
-    height: auto;
-    color: var(--color);
-}
-
-/* Bloco do mapa: flex para mapas/vídeos/imagens lado a lado */
+/* Área do Mapa e Multimídia */
 .mapa {
     display: flex;
     justify-content: center;
@@ -327,15 +348,16 @@ footer ul{
     padding-top: 5rem;
 }
 
-/* Correção: Usa max-width e permite que ocupe o espaço disponível em telas maiores */
-.mapa img, .mapa video, .mapa iframe {
+.mapa img,
+.mapa video,
+.mapa iframe {
     max-width: 25rem;
-    width: 100%; /* Permite que cresça até 25rem e se reduza em telas pequenas */
+    width: 100%;
     height: auto;
     border-radius: var(--border-radius);
 }
 
-/* Botão/link para tabela de preços: aparência de botão com padding e transição */
+/* Botão para Tabela de Preços */
 .tabela-precos a {
     background-color: var(--button-color);
     color: var(--button-text);
@@ -345,12 +367,17 @@ footer ul{
     font-weight: bold;
     transition: background var(--transition-speed), color var(--transition-speed), transform var(--transition-speed);
 }
+
 .tabela-precos a:hover {
     background: var(--button-hover-bg);
     color: var(--button-hover-text);
     transform: scale(1.03);
 }
-.modo_de_cor, .btn-curtir, .btn-comentar{
+
+/* Botões de Ação (Modo de cor, Curtir, Comentar) */
+.modo_de_cor,
+.btn-curtir,
+.btn-comentar {
     margin-top: 20px;
     padding: 10px 20px;
     background-color: var(--button-color);
@@ -360,19 +387,21 @@ footer ul{
     cursor: pointer;
     font-weight: bold;
     transition: transform var(--transition-speed);
-    width:fit-content;
+    width: fit-content;
     align-self: center;
 }
+
 .modo_de_cor:hover {
     transform: scale(1.03);
 }
+
 .main-wrapper {
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
-
 }
-/* Modo escuro: inverte cores e ajusta background */
+
+/* Configuração do Modo Escuro (Dark Mode) */
 .dark-mode {
     background: url(./Imagens/light_mode.svg);
     background-size: contain;
@@ -389,4 +418,5 @@ footer ul{
     --color: #0c2c44;
     --background-color: #ffffff;
     --form-button-hover-bg: #f5f5f5;
+    --icon-color: #0c2c44;
 }
