@@ -1,0 +1,392 @@
+/* Arquivo CSS do site com comentários explicativos para cada bloco/propriedade. */
+
+/* Seletor universal: zera margens/paddings, faz box-sizing previsível e define fonte base */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Variáveis CSS: define altura da navbar para reutilizar no layout */
+:root{
+    --nav-h: 64px;
+    --background-color: black;
+    --brand-color: #f7e5b7;
+    --button-color: rgb(247, 229, 183);
+    --button-hover-bg: #222;
+    --button-hover-text: rgb(247, 229, 183);
+    --link-hover-color: #bfa14a;
+    --border-color: #ccc;
+    --border-focus-color: #bfa14a;
+    --bg-focus: #f5f5e6;
+    --transition-speed: 0.2s;
+    --transition-slow: 0.3s;
+    --border-radius: 8px;
+    --border-radius-sm: 6px;
+    --color: white;
+    --button-text: #222;
+    --form-button-hover-bg: #222;
+}
+
+/* Body: desloca conteúdo para não ficar sob a navbar fixa e garante box-sizing */
+body{
+    padding-top: var(--nav-h);
+    background: url(./Imagens/fundo.svg);
+    background-size: contain;
+}
+
+/* Navbar: fixa no topo, ocupa toda a largura e mantém sobreposição por z-index */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    min-height: 64px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    background-color: var(--background-color);
+}
+
+/* Links da navbar: cor padrão e hover */
+.navbar .nav-link { 
+    color: var(--color);
+}
+.navbar .nav-link:hover { 
+    color: grey;
+}
+
+/* Marca (brand) da navbar: destaque visual */
+.navbar-brand { 
+    color: var(--color);
+    font-weight: 700;
+}
+.navbar-brand:hover { 
+    color: grey;
+}
+
+/* Toggler: estilo do botão que abre/fecha o menu em telas pequenas */
+.navbar-toggler { 
+    border-color: var(--color);
+}
+
+/* Toggler Icon: Corrigido para azul (#0c2c44) */
+.navbar-toggler-icon { 
+    color:#0c2c44; 
+} 
+
+/* Seção Home: background responsivo cobrindo a área disponível */
+#Home{
+    background-repeat: repeat;
+    min-height: calc(100vh - var(--nav-h));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--brand-color);
+    padding: 2rem 1rem;
+    width: 80%;
+}
+/* Títulos e parágrafos dentro de #Home */
+#Home h1{
+    font-size: 48px;
+    transition: transform var(--transition-slow) ease-in-out;
+}
+#Home h1:hover{
+    transform: scale(1.1);
+}
+#Home p{
+    font-size: 24px;
+    margin-top: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* Estilização geral das seções do site */
+section{
+    padding: 80px 20px;
+    text-align: center;
+}
+
+/* Formulário: layout em coluna, centralizado e com estilo de cartão */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 50rem;
+    height: auto;
+    margin: 40px auto 0 auto;
+    padding: 32px 24px;
+    background: rgba(255,255,255,0.97);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    gap: 16px;
+}
+
+/* Rótulos do formulário: legibilidade e alinhamento */
+form label {
+    color: #222;
+    font-weight: bold;
+    margin-bottom: 4px;
+    text-align: left;
+}
+
+/* Inputs e textareas: padding, borda e transições */
+form input, form textarea {
+    padding: 10px 12px;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    background: #fafafa;
+    transition: border var(--transition-speed), background var(--transition-speed);
+    margin-bottom: 8px;
+}
+
+/* Estado de foco: destaque visual para acessibilidade */
+form input:focus, form textarea:focus {
+    border: 1.5px solid var(--border-focus-color);
+    background: var(--bg-focus);
+    outline: none;
+}
+
+/* Botões do formulário: largura total, cores e hover */
+form input[type="submit"], form input[type="reset"] {
+    width: 100%;
+    height: 48px;
+    font-size: 1.1em;
+    background: var(--button-color);
+    color: var(--button-text);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background var(--transition-speed), color var(--transition-speed), transform var(--transition-speed);
+}
+form input[type="submit"]:hover, form input[type="reset"]:hover {
+    background: var(--form-button-hover-bg);
+    color: var(--button-hover-text);
+    transform: scale(1.03);
+}
+
+/* Checkbox dos termos: espaçamento ao lado */
+.termos-texto input[type="checkbox"] {
+    margin-right: 6px;
+}
+
+/* Link dos termos: aparência e hover */
+.termos-texto a {
+    color: black;
+    text-decoration: underline;
+}
+.termos-texto a:hover {
+    color: var(--link-hover-color);
+}
+
+/* Container genérico: gap e centralização */
+.container{
+    gap: 0.5vh;
+    justify-items: center;
+}
+.container p{
+    max-width: 55vh;
+}
+
+/* Rodapé: cor de fundo, texto e espaçamento */
+footer{
+    background: var(--background-color);
+    color: var(--color);
+    text-align: center;
+    padding: 20px;
+}
+footer a{
+    color: var(--color);
+}
+footer a:hover{
+    color: grey;
+}
+footer ul{
+    list-style: none;
+}
+
+/* Seção Sobre, Nossos produtos e Contatos: background responsivo */
+#Sobre, #Nossos-produtos, #Contatos {
+    height: auto;
+    color: var(--color);
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+#Nossos-produtos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#Sobre h2 {
+    padding-bottom: 20px;
+}
+
+#Sobre p {
+    max-width: 120vh;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-size: larger;
+    font-family: Arial, sans-serif;
+    text-align: justify;
+}
+
+/* Lista de produtos: layout flex, alinhamento e espaçamento */
+.produtos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+    width: 90%;
+}
+
+/* Cada produto tem largura fixa/responsiva e alinhamento interno */
+.produto {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Caixa da imagem: mantém proporção e esconde excesso */
+.caixa {
+    width: 100%;
+    aspect-ratio: 9 / 11;
+    background: #fff;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    display: block;
+}
+
+/* Imagem dentro da caixa: cobre a caixa sem distorcer (recorta centralizado) */
+.caixa img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Ajustes para telas muito grandes: aumenta largura das .produto */
+@media (min-width: 1920px) {
+    /* Corrigido para aplicar a largura correta nos elementos de media e produtos */
+    .produto { width: 40rem; }
+    .caixa { aspect-ratio: 4 / 5; }
+
+    /* Ajuste para mapa em telas grandes */
+    .mapa img, .mapa video, .mapa iframe { width: 35rem; }
+}
+
+/* Mobile: duas colunas aproximadas para produtos em telas pequenas */
+@media (max-width: 480px) {
+    .produto { width: calc(50% - 16px); }
+    .produtos, .mapa{ gap: 12px; }
+
+    /* Correção: Garante que os elementos do mapa ocupem quase 100% da largura em telas pequenas */
+    .mapa img, .mapa video, .mapa iframe { 
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Responsive: ajustes para telas médias */
+@media (max-width: 1100px) {
+    #Sobre p {
+        max-width: 20rem;
+    }
+    form {
+        max-width: 20rem;
+    }
+}
+
+/* Seção Contatos: background com mesma lógica de responsividade */
+#Contatos {
+    height: auto;
+    color: var(--color);
+}
+
+/* Bloco do mapa: flex para mapas/vídeos/imagens lado a lado */
+.mapa {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    flex-wrap: wrap;
+    padding-top: 5rem;
+}
+
+/* Correção: Usa max-width e permite que ocupe o espaço disponível em telas maiores */
+.mapa img, .mapa video, .mapa iframe {
+    max-width: 25rem;
+    width: 100%; /* Permite que cresça até 25rem e se reduza em telas pequenas */
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+/* Botão/link para tabela de preços: aparência de botão com padding e transição */
+.tabela-precos a {
+    background-color: var(--button-color);
+    color: var(--button-text);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: bold;
+    transition: background var(--transition-speed), color var(--transition-speed), transform var(--transition-speed);
+}
+.tabela-precos a:hover {
+    background: var(--button-hover-bg);
+    color: var(--button-hover-text);
+    transform: scale(1.03);
+}
+.modo_de_cor, .btn-curtir, .btn-comentar{
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--button-color);
+    color: var(--button-text);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform var(--transition-speed);
+    width:fit-content;
+    align-self: center;
+}
+.modo_de_cor:hover {
+    transform: scale(1.03);
+}
+.main-wrapper {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+/* Modo escuro: inverte cores e ajusta background */
+.dark-mode {
+    background: url(./Imagens/light_mode.svg);
+    background-size: contain;
+
+    --brand-color: #0c2c44;
+    --button-color: #0c2c44;
+    --button-hover-bg: #fff;
+    --button-hover-text: #0c2c44;
+    --button-text: #f5f5f5;
+    --link-hover-color: #bfa14a;
+    --border-color: #dcdcdc;
+    --border-focus-color: #bfa14a;
+    --bg-focus: #ffffff;
+    --color: #0c2c44;
+    --background-color: #ffffff;
+    --form-button-hover-bg: #f5f5f5;
+}
