@@ -1,0 +1,1 @@
+Esse é um site desenvolvido drante o primeiro semestre da faculdade, ele foi desenvolvido em duas etapas, sendo na primeira parte somente usando HTML e CSS, ou seja, somente o conteúdo e design do site, na segunda parte, foi iserido o JavaScript para adcionar algumas funcionalidades.
