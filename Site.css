@@ -35,6 +35,16 @@ body {
     background-size: contain;
 }
 
+.page {
+    display: none;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page.active {
+    display: block;
+}
 /* Barra de Navegação (Navbar) fixa no topo */
 .navbar {
     position: fixed;
@@ -45,7 +55,6 @@ body {
     min-height: 64px;
     height: auto;
     display: flex;
-    align-items: center;
     padding: 0 1rem;
     background-color: var(--background-color);
 }
@@ -78,7 +87,6 @@ body {
 .navbar-toggler-icon {
     color: var(--icon-color) !important;
 }
-
 /* Seção Home: Tela de boas-vindas */
 #Home {
     background-repeat: repeat;
@@ -209,6 +217,10 @@ footer {
     color: var(--color);
     text-align: center;
     padding: 20px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 footer a {
@@ -220,8 +232,14 @@ footer a:hover {
 }
 
 footer ul {
+    display: flex;
     list-style: none;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-direction: column;
 }
+
 
 /* Seções de Conteúdo (Sobre, Produtos, Contatos) */
 #Sobre,
@@ -400,7 +418,35 @@ footer ul {
     flex-direction: column;
     align-items: center;
 }
-
+/* Estilo dos títulos, listas e itens da lista */
+        #tabela h2, ul, li{
+            color: var(--color); /* Cor do texto */
+            font-family: Arial, sans-serif; /* Fonte do texto */
+            max-width: 80%; /* Largura máxima */
+            margin: auto; /* Centraliza horizontalmente */
+            text-align: left !important; /* Alinha o texto à esquerda */
+            margin-bottom: 5px; /* Espaço abaixo do elemento */
+            list-style: 5px; /* (Obs: valor não tem efeito, apenas para listas) */
+        }
+        #tabela h2 {
+            margin-left: 16vw;
+        
+        }
+        #tabela table {
+            width: 50%; /* Largura da tabela */
+            margin: auto; /* Centraliza a tabela */
+            border-collapse: collapse; /* Junta as bordas das células */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra na tabela */
+            background-color: white; /* Fundo branco da tabela */
+        }
+        #tabela th, td {
+            padding: 12px; /* Espaçamento interno das células */
+            text-align: left; /* Alinha o texto à esquerda */
+        }
+        #tabela th {
+            background-color: var(--button-color); /* Fundo do cabeçalho */
+            color: var(--button-text); /* Cor do texto do cabeçalho */
+        }
 /* Configuração do Modo Escuro (Dark Mode) */
 .dark-mode {
     background: url(./Imagens/light_mode.svg);

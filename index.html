@@ -22,8 +22,6 @@
 
     <!-- Barra de Navegação Principal -->
     <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Navegação principal">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Sítio Santa Tereza</a>
             <!-- Botão de alternância para mobile (hambúrguer) -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
@@ -33,24 +31,23 @@
             <!-- Links da navegação -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#Home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#Sobre">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#Nossos-produtos">Nossos produtos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#Contatos">Contatos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Home" onclick="showpage('Home')">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Sobre" onclick="showpage('Sobre')">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Nossos-produtos" onclick="showpage('Nossos-produtos')">Nossos produtos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Contatos" onclick="showpage('Contatos')">Contatos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tabela" onclick="showpage('tabela')">Tabela de preços</a></li>
                 </ul>
             </div>
-        </div>
     </nav>
 
-    <main class="main-wrapper">
         <!-- Seção Home: Introdução -->
-        <section id="Home">
+        <section id="Home" class="page active">
             <h1>Bem-vindo ao Sítio Santa Tereza</h1>
             <p>Conheça nossos produtos e saiba mais sobre nossa história.</p>
         </section>
 
         <!-- Seção Sobre: Informações e Localização -->
-        <section id="Sobre">
+        <section id="Sobre" class="page">
             <h2>Quem somos nós?</h2>
             <p>Somos uma empresa familiar, localizada em Venda Nova do Imigrante-ES. Todos os nossos produtos são
                 produzidos em nossa propriedade e de forma artesanal. Venha nos visitar!</p>
@@ -72,7 +69,7 @@
         </section>
 
         <!-- Seção Nossos Produtos: Catálogo -->
-        <section id="Nossos-produtos">
+        <section id="Nossos-produtos" class="page">
             <h2>Nossos Produtos:</h2>
             <div class="produtos">
                 <!-- Produto 1 -->
@@ -135,7 +132,7 @@
         </section>
 
         <!-- Seção Contatos: Formulário -->
-        <section id="Contatos">
+        <section id="Contatos" class="page">
             <h2>Entre em Contato</h2>
             <form id="contato-form">
                 <label for="nome">Nome:</label><input type="text" id="nome" name="nome" required>
@@ -152,68 +149,55 @@
             </form>
             <button class="modo_de_cor" onclick="darkModeToggle()">Alternar Modo de cor</button>
         </section>
+        <section id="tabela" class="page">
+            <!-- Tabela de preços dos produtos -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Produto</th> <!-- Cabeçalho da coluna de produtos -->
+                <th>Valor</th>    <!-- Cabeçalho da coluna de valores -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="produto_nome">Café em pó 500g</td> <!-- Nome do produto -->
+                <td class="produto_preco">42.50</td>        <!-- Valor do produto -->
+            </tr>
+            <tr>
+                <td class="produto_nome">Café em grão 500g</td>
+                <td class="produto_preco">42.50</td>
+            </tr>
+            <tr>
+                <td class="produto_nome"   >Café em pó especial para moka e prensa francesa 250g</td>
+                <td class="produto_preco">22.00</td>
+            </tr>
+            <tr>
+                <td class="produto_nome">Cachaça branca</td>
+                <td class="produto_preco">50.00</td>
+            </tr>
+            <tr>
+                <td class="produto_nome">Cachaça amarela</td>
+                <td class="produto_preco">55.00</td>
+            </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td id="total"></td> <!-- Célula para exibir o total calculado -->
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <!-- Título da seção de informações adicionais -->
+    <h2>Mais informações sobre os produtos:</h2>
+    <!-- Lista com descrições detalhadas dos produtos -->
+    <ul>
+        <li>Café em pó 500g: Nosso café em pó de 500g é cuidadosamente selecionado e torrado para oferecer um sabor rico e encorpado. Ideal para quem aprecia um café forte e aromático.</li>
+        <li>Café em grão 500g: Para os amantes do café fresco,  nosso café em grão de 500g é a escolha perfeita. Moa na hora para garantir o máximo de sabor e aroma em cada xícara.</li>   
+        <li>Café em pó especial para moka e prensa francesa 250g: Este café em pó especial de 250g é formulado para métodos de preparo como moka e prensa francesa, proporcionando uma experiência de café suave e equilibrada.</li>
+        <li>Cachaça branca: Nossa cachaça branca é destilada com cuidado para preservar o sabor puro da cana-de-açúcar. Perfeita para coquetéis ou para ser apreciada pura.</li>    
+        <li>Cachaça amarela: A cachaça amarela é envelhecida em barris de madeira, o que lhe confere um sabor mais complexo e suave. Ideal para quem busca uma bebida com caráter e tradição.</li>
+    </ul>
+        </section>
     </main>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const termos = document.getElementById('termos');
-            const enviar = document.getElementById('enviar');
-            if (termos && enviar) {
-                // Habilita/Desabilita o botão Enviar com base no checkbox de Termos
-                termos.addEventListener('change', function () { enviar.disabled = !this.checked; });
-
-                // Simula o envio do formulário
-                enviar.form.addEventListener('submit', function (e) {
-                    e.preventDefault(); // Evita o envio padrão (recarregamento)
-                    alert('Formulário enviado com sucesso!');
-                    enviar.form.reset();
-                    enviar.disabled = true; // Desabilita o botão após o reset
-                });
-            }
-        });
-
-        // Função para alternar entre modo claro e escuro
-        function darkModeToggle() {
-            // Alterna a classe dark-mode no 'body' (pois as variáveis globais estão lá)
-            if (document.body.classList.contains('dark-mode')) {
-                document.body.classList.remove('dark-mode');
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        // Verifica o tema salvo no localStorage ao carregar a página
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-            }
-        });
-
-        // Lógica para os botões de "Curtir"
-        const botoesCurtir = document.querySelectorAll('.btn-curtir');
-
-        botoesCurtir.forEach(botao => {
-            botao.addEventListener('click', () => {
-                const contador = botao.querySelector('.contagem');
-                let numeroAtual = parseInt(contador.innerText);
-
-                if (botao.classList.contains('curtido')) {
-                    botao.classList.remove('curtido');
-                    numeroAtual--;
-                    // Atualiza o texto e o contador
-                    botao.innerHTML = `Curtir <span class="contagem">${numeroAtual}</span>`;
-                } else {
-                    botao.classList.add('curtido');
-                    numeroAtual++;
-                    // Atualiza o texto e o contador
-                    botao.innerHTML = `Curtiu <span class="contagem">${numeroAtual}</span>`;
-                }
-            });
-        });
-    </script>
-
     <!-- Rodapé -->
     <footer>
         <div class="footer-content">
@@ -225,6 +209,7 @@
             <p>© 2025 Sítio Santa Tereza - Todos os direitos reservados.</p>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>
