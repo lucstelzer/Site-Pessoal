@@ -35,17 +35,3 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
         
-        function showpage(pageName) {
-    const pages = document.querySelectorAll('.page');
-    const sidebar = document.getElementById('sidebar');
-    const body = document.body;
-
-    pages.forEach(page => {
-        page.classList.remove('active');
-    });
-
-    const selectedPage = document.getElementById(pageName);
-    if (selectedPage) {
-        selectedPage.classList.add('active');
-    }
-}
