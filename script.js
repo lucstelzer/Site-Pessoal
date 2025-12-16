@@ -34,4 +34,44 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.body.classList.add('dark-mode');
             }
         });
-        
+        document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById("imageModal");
+    const imgAmpliada = document.getElementById("imgAmpliada");
+    const legendaTexto = document.getElementById("legenda");
+    const spanFechar = document.getElementsByClassName("fechar-modal")[0];
+
+    // Seleciona todas as imagens dentro das caixas de produtos
+    const imagensProdutos = document.querySelectorAll('.caixa img');
+
+    imagensProdutos.forEach(img => {
+        img.style.cursor = "zoom-in"; // Muda o mouse para indicar que é clicável
+        img.onclick = function() {
+            modal.style.display = "block";
+            imgAmpliada.src = this.src; // Pega o caminho da imagem clicada
+            legendaTexto.innerHTML = this.alt; // Usa o texto alternativo como legenda
+        }
+    });
+
+    // Fecha o modal ao clicar no X
+    spanFechar.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Fecha o modal ao clicar fora da imagem
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+});
+
+function showpage(pageId) { 
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => {
+        if (page.id === pageId) {
+            page.classList.add('active');
+        } else {
+            page.classList.remove('active');
+        }
+    });
+}
