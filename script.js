@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Simula o envio do formulário
                 enviar.form.addEventListener('submit', function (e) {
-                    e.preventDefault(); // Evita o envio padrão (recarregamento)
+                    /*e.preventDefault(); // Evita o envio padrão (recarregamento)*/
                     alert('Formulário enviado com sucesso!');
                     enviar.form.reset();
                     enviar.disabled = true; // Desabilita o botão após o reset

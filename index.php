@@ -1,3 +1,31 @@
+<?php
+require_once 'database/conn.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = $_POST['nome'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $telefone = $_POST['telefone'] ?? '';
+    $mensagem = $_POST['mensagem'] ?? '';
+
+    try {
+        // Prepara a query SQL (use nomes de colunas iguais aos da sua tabela no Supabase)
+        $sql = "INSERT INTO form (name, email, tel, mensagem) VALUES (:name, :email, :tel, :mensagem)";
+        $stmt = $pdo->prepare($sql);
+        
+        // Vincula os parâmetros para evitar SQL Injection
+        $stmt->execute([
+            ':name' => $name,
+            ':email' => $email,
+            ':tel' => $tel,
+            ':mensagem' => $mensagem
+        ]);
+
+        echo "<script>alert('Dados guardados no Supabase!'); window.location.href='index.html';</script>";
+    } catch (PDOException $e) {
+        echo "Erro ao inserir dados: " . $e->getMessage();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
