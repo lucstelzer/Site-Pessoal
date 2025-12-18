@@ -26,22 +26,20 @@ require_once 'database/conn.php';
 
     <!-- Barra de Navegação Principal -->
     <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Navegação principal">
-            <!-- Botão de alternância para mobile (hambúrguer) -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#Home" onclick="showpage('Home')">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#Sobre" onclick="showpage('Sobre')">Sobre</a></li>
+            <li class="nav-item"><a class="nav-link" href="#Nossos-produtos" onclick="showpage('Nossos-produtos')">Nossos produtos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#Contatos" onclick="showpage('Contatos')">Contatos</a></li>
+        </ul>
+    </div>
+</nav>
 
-            <!-- Links da navegação -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#Home" onclick="showpage('Home')">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#Sobre" onclick="showpage('Sobre')">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#Nossos-produtos" onclick="showpage('Nossos-produtos')">Nossos produtos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#Contatos" onclick="showpage('Contatos')">Contatos</a></li>
-                </ul>
-            </div>
-    </nav>
+<script src="script.js"></script>
 <main class="main-wraper">
         <!-- Seção Home: Introdução -->
         <section id="Home" class="page active">
