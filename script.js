@@ -5,13 +5,59 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Habilita/Desabilita o botão Enviar com base no checkbox de Termos
                 termos.addEventListener('change', function () { enviar.disabled = !this.checked; });
 
-                // Simula o envio do formulário
-                enviar.form.addEventListener('submit', function (e) {
-                    /*e.preventDefault(); // Evita o envio padrão (recarregamento)*/
-                    alert('Formulário enviado com sucesso!');
-                    enviar.form.reset();
-                    enviar.disabled = true; // Desabilita o botão após o reset
-                });
+                // Envio do formulário via AJAX (fetch) sem recarregar a página
+                const form = document.getElementById('contato-form');
+                if (form) {
+                    // Handler centralizado para envio via AJAX
+                    async function sendForm(e) {
+                        console.log('sendForm invoked', e);
+                        // Bloqueia qualquer comportamento nativo imediatamente
+                        if (e && e.preventDefault) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                        }
+
+                        enviar.disabled = true;
+                        const formData = new FormData(form);
+
+                        try {
+                            const response = await fetch(form.action, { method: 'POST', body: formData });
+                            const data = await response.json();
+                            console.log('server response', data);
+                            showFormMessage(data.success, data.message || 'Resposta recebida.');
+                            if (data.success) {
+                                form.reset();
+                                enviar.disabled = true;
+                            } else {
+                                enviar.disabled = false;
+                            }
+                        } catch (err) {
+                            console.error('fetch error', err);
+                            showFormMessage(false, 'Erro ao enviar o formulário.');
+                            enviar.disabled = false;
+                        }
+
+                        return false; // extra safeguard
+                    }
+
+                    // Evita comportamento nativo caso alguém pressione Enter (submit) e garante que clicar no botão também funcione
+                    form.addEventListener('submit', sendForm);
+                    console.log('attaching click to enviar', enviar);
+                    enviar.addEventListener('click', sendForm);
+
+                    function showFormMessage(success, message) {
+                        let msg = document.getElementById('form-message');
+                        if (!msg) {
+                            msg = document.createElement('div');
+                            msg.id = 'form-message';
+                            msg.style.marginTop = '10px';
+                            form.parentNode.insertBefore(msg, form.nextSibling);
+                        }
+                        msg.textContent = message;
+                        msg.style.color = success ? 'green' : 'red';
+                        setTimeout(() => { msg.textContent = ''; }, 5000);
+                    }
+                }
             }
         });
 

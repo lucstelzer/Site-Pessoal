@@ -1,30 +1,6 @@
 <?php
 require_once 'database/conn.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = $_POST['nome'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $telefone = $_POST['telefone'] ?? '';
-    $mensagem = $_POST['mensagem'] ?? '';
-
-    try {
-        // Prepara a query SQL (use nomes de colunas iguais aos da sua tabela no Supabase)
-        $sql = "INSERT INTO form (name, email, tel, mensagem) VALUES (:name, :email, :tel, :mensagem)";
-        $stmt = $pdo->prepare($sql);
-        
-        // Vincula os parâmetros para evitar SQL Injection
-        $stmt->execute([
-            ':name' => $name,
-            ':email' => $email,
-            ':tel' => $tel,
-            ':mensagem' => $mensagem
-        ]);
-
-        echo "<script>alert('Dados guardados no Supabase!'); window.location.href='index.html';</script>";
-    } catch (PDOException $e) {
-        echo "Erro ao inserir dados: " . $e->getMessage();
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -129,17 +105,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Seção Contatos: Formulário -->
         <section id="Contatos" class="page">
             <h2>Entre em Contato</h2>
-            <form id="contato-form">
-                <label for="nome">Nome:</label><input type="text" id="nome" name="nome" required>
+            <form action="actions/form.php" method="post" id="contato-form">
+                <label for="nome">Nome:</label><input type="text" id="nome" name="name" required>
                 <label for="email">E-mail:</label><input type="email" id="email" name="email" required>
-                <label for="telefone">Telefone:</label><input type="text" id="telefone" name="telefone"
+                <label for="telefone">Telefone:</label><input type="text" id="telefone" name="tel"
                     placeholder="(99) 99999-9999">
                 <label for="mensagem">Mensagem:</label><textarea id="mensagem" name="mensagem" required></textarea>
                 <div class="termos-texto">
                     <label><input type="checkbox" id="termos"> Li e concordo com os <a href="seu_arquivo.html"
                             target="_blank" rel="noopener noreferrer">Termos de Uso</a></label>
                 </div>
-                <input type="submit" id="enviar" value="Enviar" disabled>
+                <button type="button" id="enviar" disabled>Enviar</button>
                 <input type="reset" value="Limpar">
             </form>
             <button class="modo_de_cor" onclick="darkModeToggle()">Alternar Modo de cor</button>
