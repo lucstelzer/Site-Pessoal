@@ -166,7 +166,7 @@ form textarea:focus {
 
 /* Botões do formulário (Enviar/Limpar) */
 form input[type="submit"],
-form input[type="reset"] {
+form input[type="reset"], form button[type="submit"] {
     width: 100%;
     height: 48px;
     font-size: 1.1em;
@@ -181,7 +181,7 @@ form input[type="reset"] {
 }
 
 form input[type="submit"]:hover,
-form input[type="reset"]:hover {
+form input[type="reset"]:hover, form button[type="submit"]:hover {
     background: var(--form-button-hover-bg);
     color: var(--button-hover-text);
     transform: scale(1.03);

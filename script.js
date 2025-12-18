@@ -6,40 +6,38 @@ document.addEventListener('DOMContentLoaded', function () {
                 termos.addEventListener('change', function () { enviar.disabled = !this.checked; });
 
                 // Envio do formulário via AJAX (fetch) sem recarregar a página
-                const form = document.getElementById('contato-form');
-                if (form) {
-                    // Handler centralizado para envio via AJAX
-                    async function sendForm(e) {
-                        console.log('sendForm invoked', e);
-                        // Bloqueia qualquer comportamento nativo imediatamente
-                        if (e && e.preventDefault) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                        }
+                // No seu arquivo script.js, dentro de document.addEventListener('DOMContentLoaded', ...
+const form = document.getElementById('contato-form');
+if (form) {
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault(); // Impede o redirecionamento para a página PHP
+        
+        const enviarBtn = document.getElementById('enviar');
+        enviarBtn.disabled = true;
+        
+        const formData = new FormData(form);
 
-                        enviar.disabled = true;
-                        const formData = new FormData(form);
-
-                        try {
-                            const response = await fetch(form.action, { method: 'POST', body: formData });
-                            const data = await response.json();
-                            console.log('server response', data);
-                            showFormMessage(data.success, data.message || 'Resposta recebida.');
-                            if (data.success) {
-                                form.reset();
-                                enviar.disabled = true;
-                            } else {
-                                enviar.disabled = false;
-                            }
-                        } catch (err) {
-                            console.error('fetch error', err);
-                            showFormMessage(false, 'Erro ao enviar o formulário.');
-                            enviar.disabled = false;
-                        }
-
-                        return false; // extra safeguard
-                    }
-
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            
+            // Exibe a mensagem na mesma página
+            showFormMessage(data.success, data.message);
+            
+            if (data.success) {
+                form.reset();
+            } else {
+                enviarBtn.disabled = false;
+            }
+        } catch (err) {
+            showFormMessage(false, 'Erro ao enviar o formulário.');
+            enviarBtn.disabled = false;
+        }
+    });
+}
                     // Evita comportamento nativo caso alguém pressione Enter (submit) e garante que clicar no botão também funcione
                     form.addEventListener('submit', sendForm);
                     console.log('attaching click to enviar', enviar);
@@ -59,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             }
-        });
+        );
 
         // Função para alternar entre modo claro e escuro
         function darkModeToggle() {

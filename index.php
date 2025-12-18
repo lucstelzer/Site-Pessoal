@@ -115,7 +115,7 @@ require_once 'database/conn.php';
                     <label><input type="checkbox" id="termos"> Li e concordo com os <a href="seu_arquivo.html"
                             target="_blank" rel="noopener noreferrer">Termos de Uso</a></label>
                 </div>
-                <button type="button" id="enviar" disabled>Enviar</button>
+                <button type="submit" id="enviar" disabled>Enviar</button>
                 <input type="reset" value="Limpar">
             </form>
             <button class="modo_de_cor" onclick="darkModeToggle()">Alternar Modo de cor</button>
